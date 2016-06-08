@@ -1,0 +1,6 @@
+{
+  "name": "PoC-SmartAppBanners",
+  "tagline": "",
+  "body": "### Smart App Banner\r\n_This is a sample page._\r\n\r\n- On iOS, you should see a smart banner proposing to open/download the app.\r\n- On Android, you should see a native app install banner proposing the app on the play store.",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
