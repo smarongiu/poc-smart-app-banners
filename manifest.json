@@ -1,0 +1,21 @@
+{
+  "lang": "fr",
+  "name": "poc smart app banner",
+  "description": "Android smart banners",
+  "short_name": "poc",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }],
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "aliceblue",
+  "background_color": "gray",
+  "prefer_related_applications": true,
+  "related_applications": [{
+    "platform": "play",
+    "id": "com.poleemploi.poleemploietmoi"
+  }],
+}
