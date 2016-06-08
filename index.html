@@ -1,54 +1,55 @@
 <!DOCTYPE html>
-<!--
-Copyright 2015 Google Inc. All Rights Reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
-<html>
+<html lang="en-us">
   <head>
-    <title>Web App Install Banner: Related Apps (Android currently) Sample</title>
+    <meta charset="UTF-8">
+    <title>PoC-SmartAppBanners by smarongiu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/samples/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
     <link rel="manifest" href="manifest.json">
+
+    <meta name="apple-itunes-app" content="app-id=1005030039">
+
   </head>
   <body>
-    <h1>Web App Install Banner: Related Apps (Android currently) Sample</h1>
+    <section class="page-header">
+      <h1 class="project-name">PoC-SmartAppBanners</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/smarongiu/poc-smart-app-banners" class="btn">View on GitHub</a>
+    </section>
 
-    <p>Available in <a href="https://www.chromestatus.com/features/4540065577435136">Chrome 44+ (for Android)</a></p>
+    <section class="main-content">
+      <h3>
+<a id="smart-app-banner" class="anchor" href="#smart-app-banner" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Smart App Banner</h3>
 
-    <p>The <a href="https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android">related (Native) app install banner</a> will prompt the user to add your web app to the users device.
-    It will only prompt when a number of criteria have been met:
-    </p>
+<p><em>This is a sample page.</em></p>
 
-    <ul>
-      <li>The site is using HTTPS</li>
-      <li>The site has a manifest declared</li>
-      <li>The manifest has a <code>short_name</code>, 144 pixel icon and a type of 'image/png'</li>
-      <li>The manifest has a <code>related_applications</code> section with an object that has the 'type': 'play' and a Google Play Store package ID.</li>
-    </ul>
+<ul>
+<li>On iOS, you should see a smart banner proposing to open/download the app.</li>
+<li>On Android, you should see a native app install banner proposing the app on the play store.</li>
+</ul>
 
-    <p>To see if this example works, come back in another day and you will see the banner.</p>
-    <p>For testing we encourage you to force the banner to appear by setting the chrome://flags/#bypass-app-banner-engagement-checks flag.</p>
-    <script> 
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/smarongiu/poc-smart-app-banners">PoC-SmartAppBanners</a> is maintained by <a href="https://github.com/smarongiu">smarongiu</a>.</span>
+      </footer>
+
+    </section>
+
+    <script>
       window.addEventListener('load', function() {
-  
-        var outputElement = document.getElementById('output');
-               
-        window.addEventListener('beforeinstallprompt', function(e) {
-          outputElement.textContent = 'beforeinstallprompt Event fired';
-        });
+        navigator.serviceWorker.register('service-worker.js', { scope: './' })
+          .then(function(r) {
+            console.log('registered service worker');
+          })
+          .catch(function(whut) {
+            console.error('uh oh... ');
+            console.error(whut);
+          });        
       });
     </script>
+  
   </body>
-</head>
+</html>
