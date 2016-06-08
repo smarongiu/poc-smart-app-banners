@@ -1,30 +1,45 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <title>Hello SmartAppBanner</title>
+    <meta charset="UTF-8">
+    <title>PoC-SmartAppBanners by smarongiu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
 
     <link rel="manifest" href="manifest.json">
 
     <meta name="apple-itunes-app" content="app-id=1005030039">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
   <body>
-		<div align="center" style="background-color:#3399ff">
-			<br/>
-		    <h1>PoC SmartAppBanner</h1>
-		    <img src="http://www.pole-emploi.fr/accueil/image/mmlelement/pj/a3/ab/6f/28/new-cover-tinified20649.jpg">
-		    <br/>
-        <button id="btnSave" disabled>Affiche banner</button>
-		    <br/>
-		</div>
+    <section class="page-header">
+      <h1 class="project-name">PoC-SmartAppBanners</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/smarongiu/poc-smart-app-banners" class="btn">View on GitHub</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="smart-app-banner" class="anchor" href="#smart-app-banner" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Smart App Banner</h3>
+
+<p><em>This is a sample page.</em></p>
+
+<ul>
+<li>On iOS, you should see a smart banner proposing to open/download the app.</li>
+<li>On Android, you should see a native app install banner proposing the app on the play store.</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/smarongiu/poc-smart-app-banners">PoC-SmartAppBanners</a> is maintained by <a href="https://github.com/smarongiu">smarongiu</a>.</span>
+      </footer>
+
+    </section>
+
     <script>
       window.addEventListener('load', function() {
-  
-        var outputElement = document.getElementById('output');
-        var btnSave = document.getElementById('btnSave');
-        var deferredPrompt;
-  
         navigator.serviceWorker.register('service-worker.js', { scope: './' })
           .then(function(r) {
             console.log('registered service worker');
@@ -32,47 +47,9 @@
           .catch(function(whut) {
             console.error('uh oh... ');
             console.error(whut);
-          });
-        
-        window.addEventListener('beforeinstallprompt', function(e) {
-          console.log('beforeinstallprompt Event fired');
-          e.preventDefault();
-          
-          // Enable the button.
-          btnSave.removeAttribute('disabled');
-          
-          // Stash the event so it can be triggered later.
-          deferredPrompt = e;
-          
-          return false;
-        });
-        
-        btnSave.addEventListener('click', function() {
-          if (deferredPrompt !== undefined) {
-            // The user has had a postive interaction with our app and Chrome
-            // has tried to prompt previously, so let's show the prompt.
-            deferredPrompt.prompt();
-            
-            outputElement.textContent = 'Deferred Prompt shown';
-          
-            // Follow what the user has selected.
-            deferredPrompt.userChoice.then(function(choiceResult) {
-              
-              console.log(choiceResult.outcome);
-              
-              if (choiceResult.outcome == 'dismissed') {
-                console.log('User cancelled homescreen install');
-              }
-              else {
-                console.log('User added to homescreen');
-              }
-              
-              // We no longer need the prompt.  Clear it up.
-              deferredPrompt = null;
-            });
-          }
-        });
+          });        
       });
     </script>
+  
   </body>
 </html>
