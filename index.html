@@ -35,17 +35,5 @@
           <span class="site-footer-owner"><a href="https://github.com/smarongiu/poc-smart-app-banners">PoC-SmartAppBanners</a> is maintained by <a href="https://github.com/smarongiu">smarongiu</a>.</span>
       </footer>
     </section>
-    <script>
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js', { scope: './' })
-          .then(function(r) {
-            console.log('registered service worker');
-          })
-          .catch(function(whut) {
-            console.error('uh oh... ');
-            console.error(whut);
-          });        
-      });
-    </script>
   </body>
 </html>
